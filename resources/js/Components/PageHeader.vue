@@ -1,0 +1,32 @@
+<template>
+  <div>
+    <Head :title="title" />
+    <breadcrumb :breadcrumbs="breadcrumbs" />
+    <div class="mt-2 md:flex md:items-center md:justify-between">
+      <div class="flex-1 min-w-0">
+        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">{{ title }}</h2>
+      </div>
+      <div class="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
+        <slot name="actions" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Breadcrumb from 'components/Breadcrumb';
+import { Head } from '@inertiajs/inertia-vue3';
+export default {
+  components: { Breadcrumb, Head },
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    breadcrumbs: {
+      type: Array,
+      default: () => [],
+    },
+  },
+};
+</script>
